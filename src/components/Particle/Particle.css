@@ -1,0 +1,7 @@
+.particleComp {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+/* TODO: Item Catalog BANK */
