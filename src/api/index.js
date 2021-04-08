@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/items';
+const url = 'https://items-catalogue.herokuapp.com/items';
 
 export const fetchItems = () => axios.get(url);
 export const createItems = (newPost) => axios.post(url, newPost);
