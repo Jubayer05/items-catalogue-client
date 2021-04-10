@@ -1,7 +1,9 @@
 /* eslint-disable no-undef */
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:5000' });
+const API = axios.create({
+  baseURL: 'https://items-catalogue.herokuapp.com',
+});
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
@@ -13,7 +15,7 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-// const url = 'https://items-catalogue.herokuapp.com/items';
+// const url = '';
 
 export const fetchItems = () => API.get('/items');
 export const createItems = (newPost) => API.post('/items', newPost);
