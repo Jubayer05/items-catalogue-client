@@ -78,15 +78,6 @@ const Navbar = () => {
             Login
           </Button>
         )}
-        <Button
-          style={{ marginLeft: '10px' }}
-          component={Link}
-          to="/tools"
-          color="primary"
-          variant="contained"
-        >
-          Tools
-        </Button>
       </Toolbar>
     </AppBar>
   );

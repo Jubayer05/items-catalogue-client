@@ -15,8 +15,6 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-// const url = '';
-
 export const fetchItems = () => API.get('/items');
 export const createItems = (newPost) => API.post('/items', newPost);
 export const updateItems = (id, updatedItem) =>

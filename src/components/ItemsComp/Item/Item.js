@@ -20,7 +20,7 @@ import { deleteItems, likeItems } from '../../../actions/itemsAction';
 const Item = ({ item, setCurrentId }) => {
   const dispatch = useDispatch();
 
-  const user = JSON.parse(localStorage.getItem('profile'));
+  const user = JSON.parse(localStorage.getItem('profile')) || { result: null };
 
   const Likes = () => {
     if (item.likes.length > 0) {
