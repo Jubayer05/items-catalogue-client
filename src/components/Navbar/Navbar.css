@@ -1,0 +1,61 @@
+.appBar {
+  border-radius: 15px;
+  margin: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row !important;
+  padding: 10px 50px;
+  background-color: #6410ff !important;
+}
+
+.heading {
+  color: rgb(232, 237, 240);
+  text-decoration: none;
+  font-family: 'Tangerine', cursive !important;
+}
+/* TODO: Remove Later */
+/* font-family: 'Niconne', cursive !important;
+font-family: 'Playball', cursive !important; */
+
+.image {
+  margin-left: 15px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  width: 400px;
+}
+
+.profile {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+}
+
+.userName {
+  display: flex;
+  align-items: center;
+}
+
+.brandContainer {
+  display: flex;
+  align-items: center;
+}
+
+.userPhoto {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+.button__secondary {
+  color: #ffffff !important;
+  background-color: #fc4786 !important;
+}
+
+.purple {
+  color: #6410ff;
+  background-color: #fc4786 !important;
+}

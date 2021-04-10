@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +10,6 @@ import { createItems, updateItems } from '../../actions/itemsAction';
 const Form = ({ currentId, setCurrentId }) => {
   const dispatch = useDispatch();
   const [postData, setPostData] = useState({
-    creator: '',
     title: '',
     description: '',
     tags: '',
@@ -18,6 +19,18 @@ const Form = ({ currentId, setCurrentId }) => {
   const post = useSelector((state) =>
     currentId ? state.items.find((p) => p._id === currentId) : null
   );
+
+  const user = JSON.parse(localStorage.getItem('profile'));
+
+  const clear = () => {
+    setCurrentId(null);
+    setPostData({
+      title: '',
+      description: '',
+      tags: '',
+      selectedFiles: '',
+    });
+  };
 
   useEffect(() => {
     if (post) setPostData(post);
@@ -29,21 +42,25 @@ const Form = ({ currentId, setCurrentId }) => {
     if (currentId) {
       dispatch(updateItems(currentId, postData));
     } else {
-      dispatch(createItems(postData));
+      dispatch(
+        createItems({
+          ...postData,
+          name: user?.result.name,
+        })
+      );
     }
     clear();
   };
 
-  const clear = () => {
-    setCurrentId(null);
-    setPostData({
-      creator: '',
-      title: '',
-      description: '',
-      tags: '',
-      selectedFiles: '',
-    });
-  };
+  if (!user?.result?.name) {
+    return (
+      <Paper>
+        <Typography variant="h6" align="center">
+          Please sign in to create your own items and like other&apos;s items.
+        </Typography>
+      </Paper>
+    );
+  }
 
   return (
     <Paper className="paper">
@@ -56,17 +73,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <Typography variant="h6">
           {currentId ? 'Editing' : 'Creating'} an Item
         </Typography>
-        <TextField
-          className="fileInput"
-          name="creator"
-          variant="outlined"
-          label="Creator"
-          fullWidth
-          value={postData.creator}
-          onChange={(e) =>
-            setPostData({ ...postData, creator: e.target.value })
-          }
-        />
+
         <TextField
           className="fileInput"
           name="title"
@@ -120,7 +127,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <Button
           onClick={clear}
           fullWidth
-          color="secondary"
+          className="button__secondary"
           variant="contained"
           size="small"
         >

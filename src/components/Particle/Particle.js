@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 import React from 'react';
 import Particles from 'react-particles-js';
 import './Particle.css';
@@ -9,9 +10,10 @@ const Particle = () => {
         params={{
           particles: {
             number: {
-              value: 100,
+              value: 150,
               density: {
-                enable: false,
+                enable: true,
+                value_area: 1803.4120608655228,
               },
             },
             size: {

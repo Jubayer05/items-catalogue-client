@@ -1,10 +1,4 @@
-import {
-  FETCH_ALL,
-  UPDATE,
-  CREATE,
-  DELETE,
-  LIKE,
-} from '../constants/actionType';
+import { FETCH_ALL, UPDATE, CREATE, DELETE } from '../constants/actionType';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (items = [], action) => {

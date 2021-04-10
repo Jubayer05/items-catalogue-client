@@ -1,10 +1,26 @@
+/* eslint-disable no-undef */
 import axios from 'axios';
 
-const url = 'https://items-catalogue.herokuapp.com/items';
+const API = axios.create({ baseURL: 'http://localhost:5000' });
 
-export const fetchItems = () => axios.get(url);
-export const createItems = (newPost) => axios.post(url, newPost);
+API.interceptors.request.use((req) => {
+  if (localStorage.getItem('profile')) {
+    req.headers.Authorization = `Bearer ${
+      JSON.parse(localStorage.getItem('profile')).token
+    }`;
+  }
+
+  return req;
+});
+
+// const url = 'https://items-catalogue.herokuapp.com/items';
+
+export const fetchItems = () => API.get('/items');
+export const createItems = (newPost) => API.post('/items', newPost);
 export const updateItems = (id, updatedItem) =>
-  axios.patch(`${url}/${id}`, updatedItem);
-export const deleteItems = (id) => axios.delete(`${url}/${id}`);
-export const likeItems = (id) => axios.patch(`${url}/${id}/likeItems`);
+  API.patch(`/items/${id}`, updatedItem);
+export const deleteItems = (id) => API.delete(`/items/${id}`);
+export const likeItems = (id) => API.patch(`/items/${id}/likeItems`);
+
+export const signIn = (formData) => API.post('users/signin', formData);
+export const signUp = (formData) => API.post('users/signup', formData);
