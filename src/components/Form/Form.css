@@ -19,3 +19,8 @@
 .buttonSubmit {
   margin-bottom: 10px !important;
 }
+
+.paper__notice {
+  font-size: 40px !important;
+  font-family: 'Niconne', cursive !important;
+}

@@ -20,7 +20,7 @@ const Form = ({ currentId, setCurrentId }) => {
     currentId ? state.items.find((p) => p._id === currentId) : null
   );
 
-  const user = JSON.parse(localStorage.getItem('profile'));
+  const user = JSON.parse(localStorage.getItem('profile')) || { result: null };
 
   const clear = () => {
     setCurrentId(null);
@@ -55,7 +55,12 @@ const Form = ({ currentId, setCurrentId }) => {
   if (!user?.result?.name) {
     return (
       <Paper>
-        <Typography variant="h6" align="center">
+        <Typography
+          variant="h6"
+          color="secondary"
+          align="center"
+          className="paper__notice"
+        >
           Please sign in to create your own items and like other&apos;s items.
         </Typography>
       </Paper>
